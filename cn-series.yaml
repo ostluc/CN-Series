@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cn-series-firewall
+spec:
+  selector:
+    matchLabels:
+      app: cn-series-firewall
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cn-series-firewall
+    spec:
+      containers:
+        - name: cn-series-firewall
+          image: gcr.io/itp-ext-cnseries/10.2.2/panos_cn_ngfw:latest
+          ports:
+            - containerPort: 80
